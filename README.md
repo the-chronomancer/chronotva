@@ -1,6 +1,6 @@
 # ChronoTVA
 
-![Python 3.9, 3.10, 3.11, 3.12](https://img.shields.io/badge/python-3.9%2C%203.10%2C%203.11%2C%203.12-blue.svg)[![CI](https://github.com/the-chronomancer/chronotva/actions/workflows/python-package.yaml/badge.svg)](https://github.com/the-chronomancer/chronotva/actions/workflows/python-package.yaml)  
+![Python 3.9, 3.10, 3.11, 3.12](https://img.shields.io/badge/python-3.9%2C%203.10%2C%203.11%2C%203.12-blue.svg) [![CI](https://github.com/the-chronomancer/chronotva/actions/workflows/python-package.yaml/badge.svg)](https://github.com/the-chronomancer/chronotva/actions/workflows/python-package.yaml)  
 ![isort](https://img.shields.io/badge/isort-passing-olivegreen.svg)
 ![black](https://img.shields.io/badge/black-passing-black.svg)
 ![mypy](https://img.shields.io/badge/mypy-passing-blueviolet.svg)
