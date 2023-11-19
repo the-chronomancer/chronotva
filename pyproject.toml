@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chronotva"
+version = "1.0.0"
+description = "ChronoTVA (The Chronomancer's Tesseract Visualization Aid) is a Python 3.9+ command-line tool designed for generating images from three-dimensional coordinates of all possible unfoldings of a tesseract (hypercube)."
+authors = [
+    { name = "Jacob Coleman", email = "jacob.wade.coleman@gmail.com" },
+]
+readme = "README.md"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+
+]
+
+keywords = ["tesseract", "visualization", "aid", "unfoldings", "isomorphism", "matplotlib", "oop"]
+
+dependencies = [
+    "matplotlib",
+]
+requires-python = ">=3.9"
+
+[project.urls]
+"Homepage" = "https://github.com/the-chronomancer/chronotva"
+"Documentation" = "https://github.com/the-chronomancer/chronotva/README.md"
+"Source" = "https://github.com/the-chronomancer/chronotva"
+"Tracker" = "https://github.com/the-chronomancer/chronotva/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=6.0.0", "mypy>=0.800", "isort>=5.0.0", "black>=20.8b1"]
+
+[project.entry-points.console_scripts]
+chronotva = "chronotva.cli:main"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore:datetime.datetime.utcfromtimestamp.*:DeprecationWarning"
+]
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["chronotva"]
+default_section = "THIRDPARTY"
+skip = [
+    ".venv",
+    "build",
+    "dist",
+]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = false
+disallow_untyped_defs = true
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = "chronotva"
+ignore_missing_imports = true

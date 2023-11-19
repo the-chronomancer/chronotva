@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11', '3.12']
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/pyproject.toml') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install build
+        pip install isort black mypy pytest twine
+        pip install .
+
+    - name: Check with isort
+      run: isort . --check-only
+
+    - name: Check with black
+      run: black . --check
+
+    - name: Check with mypy
+      run: mypy .
+
+    - name: Run pytest
+      run: pytest
+
+    - name: Build package
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        python -m build
+
+    - name: Publish package to TestPyPi
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        twine upload --repository testpypi dist/* --skip-existing --username __token__ --password ${{ secrets.TEST_PYPI_API_TOKEN }}
