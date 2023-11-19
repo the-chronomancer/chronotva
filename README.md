@@ -25,6 +25,9 @@
 - [Contact](#contact)
 
 ## Overview
+<p align="center">
+  <img src="tesseract.svg" width=25%>
+</p>
 
 ChronoTVA (The **Chrono**mancer's **T**esseract **V**isualization **A**id) is a Python 3.9+ command-line tool designed for generating images from three-dimensional coordinates of unfoldings of a tesseract.
 
