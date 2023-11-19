@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chronotva"
-version = "1.0.0"
+version = "1.0.1"
 description = "ChronoTVA (The Chronomancer's Tesseract Visualization Aid) is a Python 3.9+ command-line tool designed for generating images from three-dimensional coordinates of all possible unfoldings of a tesseract (hypercube)."
 authors = [
     { name = "Jacob Coleman", email = "jacob.wade.coleman@gmail.com" },
